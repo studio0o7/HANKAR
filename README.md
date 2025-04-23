@@ -1,62 +1,74 @@
-# HairStyle App
+# HANKAR - Luxury Clothing Brand
 
-A Next.js project built with TypeScript and enhanced with Tailwind CSS.
+This is the official website for HANKAR, a luxury clothing brand with an old money aesthetic that combines classic elegance with contemporary style.
 
-## Current Setup
+## Features
 
-- Next.js 15.2.4 with TypeScript
-- Tailwind CSS for styling
-- React 19.0.0
-- Development tools: ESLint, PostCSS
+- Modern, responsive design
+- Elegant UI reflecting the brand's luxury positioning
+- Mobile-friendly navigation
+- Product collections showcase
+- Contact and about us sections
 
-## Dependencies
+## Tech Stack
 
-- Framer Motion: For animations
-- React Icons: Icon library
-- @sendgrid/mail & nodemailer: For email functionality
-- js-cookie: For cookie management
+- Next.js 15 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS
+- Responsive Design
 
-## Project Structure
+## Design Elements
 
-The project is currently in setup phase with the following configuration:
-
-```
-├── public/               # Static assets
-├── src/                  # Source files
-│   └── assests/          # Project assets
-├── .next/                # Next.js build directory
-├── .vscode/              # VS Code configuration
-├── tailwind.config.js    # Tailwind configuration
-├── middleware.ts         # Next.js middleware
-├── package.json          # Dependencies and scripts
-├── tsconfig.json         # TypeScript configuration
-├── next.config.ts        # Next.js configuration
-└── postcss.config.mjs    # PostCSS configuration
-```
+The website uses a sophisticated color palette:
+- Deep Navy: #0a1118
+- Gold Light: rgb(200, 173, 118)
+- Off-White: #f2f2f2
+- Gold: rgb(180, 145, 70)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/hankar-website.git
+cd hankar-website
+```
+
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Run the development server
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## Learn More
+## Building for Production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+# or
+yarn build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-## Deployment
+All rights reserved. This code is proprietary and not to be used without explicit permission.
 
-The project is configured for deployment on Netlify as indicated by the netlify.toml file.
+## Contact
+
+For any inquiries, please contact [contact@hankar.com](mailto:contact@hankar.com)

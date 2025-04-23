@@ -28,6 +28,21 @@ const config: Config = {
       colors: {
         black: "#000000",
         white: "#ffffff",
+        gold: 'rgb(var(--color-gold) / <alpha-value>)',
+        'gold-light': 'rgb(var(--color-gold-light) / <alpha-value>)',
+        'cream': 'rgb(var(--color-cream) / <alpha-value>)',
+        'ivory': 'rgb(var(--color-ivory) / <alpha-value>)',
+        'navy': 'rgb(var(--color-navy) / <alpha-value>)',
+        'burgundy': 'rgb(var(--color-burgundy) / <alpha-value>)',
+        'forest': 'rgb(var(--color-forest) / <alpha-value>)',
+        'rich-brown': 'rgb(var(--color-rich-brown) / <alpha-value>)',
+        'deep-red': 'rgb(var(--color-deep-red) / <alpha-value>)',
+        'charcoal': 'rgb(var(--color-charcoal) / <alpha-value>)',
+        'sage': 'rgb(var(--color-sage) / <alpha-value>)',
+        'taupe': 'rgb(var(--color-taupe) / <alpha-value>)',
+        'deep-navy': 'rgb(28, 35, 45)',
+        'dark-bronze': 'rgb(45, 40, 30)',
+        'dark-forest': 'rgb(30, 40, 35)',
         green: {
           300: "#6ee7b7",
           400: "#34d399",
@@ -43,6 +58,25 @@ const config: Config = {
           900: "#111827",
         },
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gold-gradient': 'linear-gradient(to right, rgb(var(--color-gold)), rgb(var(--color-gold-light)))',
+      },
+      borderWidth: {
+        '1': '1px',
+      },
+      animation: {
+        'fade-up': 'fadeUp 0.8s ease-out forwards',
+        'gold-shimmer': 'goldShimmer 8s infinite linear',
+      },
+      animationDelay: {
+        '200': '200ms',
+        '400': '400ms',
+        '600': '600ms',
+        '800': '800ms',
+      }
     },
   },
   plugins: [],

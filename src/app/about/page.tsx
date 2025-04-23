@@ -1,218 +1,420 @@
+"use client";
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiAward, FiClock, FiHeart, FiUsers } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+
+// Animation variants
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { 
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1]
+    } 
+  }
+};
+
+const fadeInLeft = {
+  hidden: { opacity: 0, x: -60 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    transition: { 
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1]
+    } 
+  }
+};
+
+const fadeInRight = {
+  hidden: { opacity: 0, x: 60 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    transition: { 
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1]
+    } 
+  }
+};
+
+const staggerChildren = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3
+    }
+  }
+};
+
+const scaleUp = {
+  hidden: { scale: 0.9, opacity: 0 },
+  visible: { 
+    scale: 1, 
+    opacity: 1,
+    transition: { 
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1]
+    } 
+  }
+};
 
 export default function AboutPage() {
   return (
-    <>
-      {/* Page Header */}
-      <section className="bg-[var(--primary)] text-white py-12">
-        <div className="container">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center">About Us</h1>
-          <p className="text-center max-w-2xl mx-auto">
-            Learn more about Jagadeesh Hair Style and our team of professional stylists.
-          </p>
+    <div className="flex flex-col pt-[70px]">
+      {/* Hero Section */}
+      <section className="relative h-[70vh] min-h-[500px] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1674729445770-bbf6ef2fec26?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGluZGlhbiUyMGx1eHVyeSUyMHZpZGUlMjBjbG90aGluZ3xlbnwwfHwwfHx8MA%3D%3D"
+            alt="HANKAR Legacy"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-[#0a1118]/50"></div>
+        </div>
+        
+        <div className="container-custom relative z-10 text-center">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerChildren}
+            className="max-w-3xl mx-auto text-[#f2f2f2]"
+          >
+            <motion.p variants={fadeIn} className="uppercase tracking-wider text-[#b49146] mb-4 text-sm">Our Heritage</motion.p>
+            <motion.h1 variants={fadeIn} className="text-5xl md:text-6xl luxury-heading mb-6">The HANKAR Legacy</motion.h1>
+            <motion.div variants={scaleUp} className="h-px w-24 bg-[#b49146] mx-auto mb-6"></motion.div>
+            <motion.p variants={fadeIn} className="text-lg md:text-xl text-[#f2f2f2]/90 mb-8">
+              A journey through timeless elegance, where traditional craftsmanship meets contemporary luxury.
+            </motion.p>
+          </motion.div>
         </div>
       </section>
-
+      
+      {/* Breadcrumb */}
+      <div className="bg-[#f2f2f2] py-3 border-b border-[#0a1118]/10">
+        <div className="container-custom">
+          <nav className="text-sm text-[#0a1118]/70">
+            <ol className="flex flex-wrap items-center">
+              <li className="flex items-center">
+                <Link href="/" className="hover:text-[#b49146] transition-colors">Home</Link>
+                <span className="mx-2">→</span>
+              </li>
+              <li className="text-[#b49146]">About</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      
       {/* Our Story */}
-      <section className="section bg-white">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[400px] rounded-lg overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Salon Interior"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Our Story</h2>
-              <p className="mb-4">
-                Founded by Jagadeesh, our salon has been serving clients with exceptional hair styling 
-                and grooming services for over 5 years. What started as a small setup has now grown 
-                into a well-known name in the industry.
+      <section className="luxury-section bg-white">
+        <div className="container-custom">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerChildren}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+          >
+            <motion.div variants={fadeInLeft} className="order-2 lg:order-1">
+              <p className="uppercase tracking-wider text-[#b49146] mb-3 text-sm">Our Story</p>
+              <h2 className="luxury-heading text-3xl md:text-4xl text-[#0a1118] mb-6">A Heritage of Excellence</h2>
+              <div className="h-px w-24 bg-[#b49146] mb-8"></div>
+              <p className="text-[#0a1118]/80 leading-relaxed mb-6">
+                Founded in 2023 by visionary designer Indra Sharma, HANKAR was born from a profound appreciation for India&apos;s rich textile heritage and a desire to showcase this legacy on the global luxury stage.
               </p>
-              <p className="mb-4">
-                Our mission is to provide high-quality hair care services in a comfortable and 
-                friendly environment. We are committed to staying updated with the latest trends 
-                and techniques in hair styling to offer you the best experience.
+              <p className="text-[#0a1118]/80 leading-relaxed mb-6">
+                The name HANKAR derives from &apos;Hank&apos; — the unit of measurement for yarn — and &apos;Kar&apos; — meaning artisan. Together, they represent our commitment to craftsmanship and the meticulous creation of each garment.
               </p>
-              <p>
-                At Jagadeesh Hair Style, we believe that a great haircut can boost your confidence 
-                and transform your appearance. That&apos;s why we take the time to understand your 
-                needs and preferences before starting any service.
+              <p className="text-[#0a1118]/80 leading-relaxed">
+                Our journey began with a small atelier in Mumbai, working with master artisans whose families have preserved traditional techniques for generations. Today, while our reach has expanded globally, our core philosophy remains unchanged: to create timeless pieces that honor both heritage and innovation.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Meet the Stylist */}
-      <section className="section bg-[var(--background)]">
-        <div className="container">
-          <h2 className="section-title">Meet Our Master Stylist</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-            <div className="md:col-span-1">
-              <div className="relative h-[350px] rounded-lg overflow-hidden">
+            </motion.div>
+            
+            <motion.div variants={fadeInRight} className="order-1 lg:order-2">
+              <div className="relative aspect-[4/5] overflow-hidden elegant-border">
                 <Image
-                  src="https://images.unsplash.com/photo-1580518324671-c2f0833a3af3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                  alt="Jagadeesh - Master Stylist"
+                  src="https://images.unsplash.com/photo-1580143899752-84f03825ff1b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fEluZGlhbiUyMEx1eHVyeSUyME9sZCUyMG1vbmV5JTIwY2xvdGhpbmd8ZW58MHx8MHx8fDA%3D"
+                  alt="HANKAR founder"
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
-            </div>
-            <div className="md:col-span-2">
-              <h3 className="text-2xl font-bold mb-3">Jagadeesh</h3>
-              <p className="text-[var(--primary)] font-medium mb-4">Founder & Master Stylist</p>
-              <p className="mb-4">
-                With over 10 years of experience in the hair styling industry, Jagadeesh has 
-                established himself as a skilled stylist who excels in creating looks that 
-                complement each client&apos;s unique style and personality.
-              </p>
-              <p className="mb-4">
-                He specializes in precision haircuts, beard grooming, and creative coloring techniques. 
-                His attention to detail and dedication to customer satisfaction have earned him a 
-                loyal clientele over the years.
-              </p>
-              <p className="mb-6">
-                Jagadeesh regularly attends workshops and training sessions to stay updated with the 
-                latest trends and techniques in hair styling, ensuring that his clients always receive 
-                the best service.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <div className="bg-white p-4 rounded-lg shadow-sm flex items-center">
-                  <FiAward className="text-[var(--primary)] mr-3" size={24} />
-                  <div>
-                    <h4 className="font-bold">Certified</h4>
-                    <p className="text-sm">Professional Stylist</p>
-                  </div>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-sm flex items-center">
-                  <FiClock className="text-[var(--primary)] mr-3" size={24} />
-                  <div>
-                    <h4 className="font-bold">Experience</h4>
-                    <p className="text-sm">10+ Years</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
+      
+      {/* Our Philosophy */}
+      <section className="luxury-section bg-[#f2f2f2]">
+        <div className="container-custom">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerChildren}
+            className="text-center mb-16"
+          >
+            <motion.p variants={fadeIn} className="uppercase tracking-wider text-[#b49146] mb-3 text-sm">Our Vision</motion.p>
+            <motion.h2 variants={fadeIn} className="luxury-heading text-3xl md:text-4xl text-[#0a1118] mb-4">Philosophy & Values</motion.h2>
+            <motion.div variants={scaleUp} className="h-px w-24 bg-[#b49146] mx-auto mb-6"></motion.div>
+            <motion.p variants={fadeIn} className="text-[#0a1118]/80 max-w-2xl mx-auto">
+              At HANKAR, we are guided by a set of core principles that inform every aspect of our brand, from design and production to our relationships with clients and artisans.
+            </motion.p>
+          </motion.div>
 
-      {/* Our Team */}
-      <section className="section bg-white">
-        <div className="container">
-          <h2 className="section-title">Our Talented Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Ramesh",
-                position: "Senior Stylist",
-                speciality: "Expert in classic and modern haircuts",
-                image: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              },
-              {
-                name: "Suresh",
-                position: "Beard Specialist",
-                speciality: "Specialized in beard styling and grooming",
-                image: "https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              },
-              {
-                name: "Anil",
-                position: "Color Expert",
-                speciality: "Specialized in hair coloring techniques",
-                image: "https://images.unsplash.com/photo-1618077360395-f3068be8e001?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              }
-            ].map((member, index) => (
-              <div key={index} className="bg-[var(--background)] rounded-lg overflow-hidden shadow-md">
-                <div className="relative h-64">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                  <p className="text-[var(--primary)] font-medium mb-3">{member.position}</p>
-                  <p className="mb-0">{member.speciality}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerChildren}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            <motion.div variants={fadeIn} className="bg-white p-8 shadow-sm">
+              <div className="text-[#b49146] text-4xl mb-6">⦿</div>
+              <h3 className="text-xl luxury-heading text-[#0a1118] mb-4">Heritage Craftsmanship</h3>
+              <p className="text-[#0a1118]/70">
+                We honor and preserve traditional techniques passed down through generations, working closely with master artisans to ensure these skills continue to thrive.
+              </p>
+            </motion.div>
+            
+            <motion.div variants={fadeIn} className="bg-white p-8 shadow-sm">
+              <div className="text-[#b49146] text-4xl mb-6">⦿</div>
+              <h3 className="text-xl luxury-heading text-[#0a1118] mb-4">Sustainable Luxury</h3>
+              <p className="text-[#0a1118]/70">
+                Our commitment to sustainability shapes every decision, from sourcing materials to ethical production practices, creating pieces that are as responsible as they are beautiful.
+              </p>
+            </motion.div>
+            
+            <motion.div variants={fadeIn} className="bg-white p-8 shadow-sm">
+              <div className="text-[#b49146] text-4xl mb-6">⦿</div>
+              <h3 className="text-xl luxury-heading text-[#0a1118] mb-4">Timeless Design</h3>
+              <p className="text-[#0a1118]/70">
+                We reject the transient nature of fast fashion in favor of enduring elegance. Each HANKAR creation transcends trends, designed to be cherished for generations.
+              </p>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
+      
+      {/* Craftsmanship Process */}
+      <section className="luxury-section bg-white">
+        <div className="container-custom">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerChildren}
+            className="text-center mb-16"
+          >
+            <motion.p variants={fadeIn} className="uppercase tracking-wider text-[#b49146] mb-3 text-sm">Our Process</motion.p>
+            <motion.h2 variants={fadeIn} className="luxury-heading text-3xl md:text-4xl text-[#0a1118] mb-4">The Art of Craftsmanship</motion.h2>
+            <motion.div variants={scaleUp} className="h-px w-24 bg-[#b49146] mx-auto mb-6"></motion.div>
+            <motion.p variants={fadeIn} className="text-[#0a1118]/80 max-w-2xl mx-auto">
+              Every HANKAR creation undergoes a meticulous journey from conception to completion, involving dozens of skilled hands and hundreds of hours of dedicated craftsmanship.
+            </motion.p>
+          </motion.div>
 
-      {/* Why Choose Us */}
-      <section className="section bg-[var(--background)]">
-        <div className="container">
-          <h2 className="section-title">Why Choose Us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="w-16 h-16 bg-[var(--primary)] text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                <FiUsers size={28} />
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerChildren}
+            className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+          >
+            <motion.div variants={fadeInLeft}>
+              <div className="relative aspect-square overflow-hidden elegant-border">
+                <Image
+                  src="https://images.unsplash.com/photo-1599362593923-d5bd7c916eae?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fEluZGlhbiUyMEx1eHVyeSUyME9sZCUyMG1vbmV5JTIwY2xvdGhpbmd8ZW58MHx8MHx8fDA%3D"
+                  alt="HANKAR craftsmanship process"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
-              <h3 className="text-xl font-bold mb-2">Experienced Team</h3>
-              <p>
-                Our stylists have years of experience and continuous training in latest techniques.
-              </p>
-            </div>
+            </motion.div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="w-16 h-16 bg-[var(--primary)] text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                <FiHeart size={28} />
+            <motion.div variants={fadeInRight}>
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl luxury-heading text-[#0a1118] mb-3 flex items-center">
+                    <span className="text-[#b49146] mr-4">01</span>
+                    Material Selection
+                  </h3>
+                  <p className="text-[#0a1118]/70">
+                    We source only the finest materials, from handwoven silks to organic cottons, selecting each for its exceptional quality and sustainability credentials.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl luxury-heading text-[#0a1118] mb-3 flex items-center">
+                    <span className="text-[#b49146] mr-4">02</span>
+                    Traditional Techniques
+                  </h3>
+                  <p className="text-[#0a1118]/70">
+                    Our artisans employ age-old techniques like hand embroidery, block printing, and traditional weaving methods that have been perfected over centuries.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl luxury-heading text-[#0a1118] mb-3 flex items-center">
+                    <span className="text-[#b49146] mr-4">03</span>
+                    Meticulous Construction
+                  </h3>
+                  <p className="text-[#0a1118]/70">
+                    Each garment is constructed with extraordinary attention to detail, with multiple fittings and quality checks throughout the creation process.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl luxury-heading text-[#0a1118] mb-3 flex items-center">
+                    <span className="text-[#b49146] mr-4">04</span>
+                    Final Refinement
+                  </h3>
+                  <p className="text-[#0a1118]/70">
+                    Before any piece bears the HANKAR name, it undergoes a rigorous final inspection to ensure it meets our exacting standards of quality and craftsmanship.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-2">Personalized Service</h3>
-              <p>
-                We take time to understand your preferences and suggest styles that suit you best.
-              </p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="w-16 h-16 bg-[var(--primary)] text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                <FiAward size={28} />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Quality Products</h3>
-              <p>
-                We use premium hair care products that ensure the best results without damage.
-              </p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="w-16 h-16 bg-[var(--primary)] text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                <FiClock size={28} />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Timely Service</h3>
-              <p>
-                We value your time and ensure that our services are delivered promptly.
-              </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-12 bg-gradient-to-r from-[var(--primary)] to-black text-white">
-        <div className="container text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready for a Fresh New Look?</h2>
-          <p className="max-w-2xl mx-auto mb-8">
-            Visit us today or book an appointment to experience our professional services.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/#contact" className="btn btn-secondary py-3 px-8 text-lg">
-              Book Appointment
-            </Link>
-            <Link href="/services" className="btn bg-white text-[var(--primary)] hover:bg-opacity-90 py-3 px-8 text-lg">
-              View Services
-            </Link>
-          </div>
+      
+      {/* Testimonial Section */}
+      <section className="luxury-section bg-[#0a1118] text-[#f2f2f2]">
+        <div className="container-custom max-w-4xl">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerChildren}
+            className="text-center"
+          >
+            <motion.div 
+              variants={scaleUp}
+              className="text-6xl font-serif text-[#b49146] mb-8"
+            >
+              &quot;
+            </motion.div>
+            
+            <motion.blockquote 
+              variants={fadeIn}
+              className="text-xl md:text-2xl italic luxury-heading mb-12"
+            >
+              What sets HANKAR apart is not just their exceptional craftsmanship, but their deep understanding that true luxury is about creating pieces with meaning, pieces that tell a story and connect us to our cultural heritage in a profoundly contemporary way.
+            </motion.blockquote>
+            
+            <motion.div variants={fadeIn} className="h-px w-16 bg-[#b49146]/60 mx-auto mb-8"></motion.div>
+            
+            <motion.footer variants={fadeIn}>
+              <cite className="not-italic uppercase tracking-widest text-sm text-[#b49146]">
+                The Financial Times • Luxury Edition
+              </cite>
+            </motion.footer>
+          </motion.div>
         </div>
       </section>
-    </>
+      
+      {/* Our Atelier */}
+      <section className="luxury-section bg-[#f2f2f2]">
+        <div className="container-custom">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerChildren}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+          >
+            <motion.div variants={fadeInLeft}>
+              <p className="uppercase tracking-wider text-[#b49146] mb-3 text-sm">Visit Us</p>
+              <h2 className="luxury-heading text-3xl md:text-4xl text-[#0a1118] mb-6">Our Flagship Atelier</h2>
+              <div className="h-px w-24 bg-[#b49146] mb-8"></div>
+              <p className="text-[#0a1118]/80 leading-relaxed mb-6">
+                Located in the heart of Mumbai&apos;s luxury district, our flagship atelier offers an immersive experience into the world of HANKAR. Here, clients can explore our collections, meet with our design team, and enjoy personalized styling consultations.
+              </p>
+              <p className="text-[#0a1118]/80 leading-relaxed mb-8">
+                The space itself reflects our brand philosophy—a harmonious blend of traditional Indian architectural elements and contemporary design, creating an atmosphere of refined elegance and warm hospitality.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link href="/contact" className="btn-primary">
+                    <span>Book a Visit</span>
+                    <span className="ml-2">→</span>
+                  </Link>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link href="/collections" className="btn-secondary border-[#b49146] text-[#0a1118]">
+                    <span>Explore Collections</span>
+                    <span className="ml-2">→</span>
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+            
+            <motion.div variants={fadeInRight}>
+              <div className="relative aspect-[4/3] overflow-hidden elegant-border">
+                <Image
+                  src="https://images.unsplash.com/photo-1571587289339-cb7da03fb5a6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aW5kaWFuJTIwbHV4dXJ5JTIwdmlkZSUyMGNsb3RoaW5nfGVufDB8fDB8fHww"
+                  alt="HANKAR Mumbai atelier"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+      
+      {/* Call to Action */}
+      <section className="luxury-section bg-[#0a1118] text-[#f2f2f2]">
+        <div className="container-custom max-w-4xl">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerChildren}
+            className="text-center"
+          >
+            <motion.p variants={fadeIn} className="uppercase tracking-wider text-[#b49146] mb-3 text-sm">Join Our Journey</motion.p>
+            <motion.h2 variants={fadeIn} className="luxury-heading text-3xl mb-8">
+              Experience HANKAR
+            </motion.h2>
+            
+            <motion.p variants={fadeIn} className="text-lg text-[#f2f2f2]/80 mb-12 max-w-3xl mx-auto">
+              We invite you to explore our collections and experience the HANKAR difference—where heritage meets innovation, and timeless elegance is reimagined for the modern connoisseur.
+            </motion.p>
+            
+            <motion.div 
+              variants={scaleUp}
+              className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link href="/collections" className="btn-primary bg-[#b49146] text-[#f2f2f2] hover:bg-[#f2f2f2] hover:text-[#0a1118]">
+                  <span>Discover Our Collections</span>
+                  <span className="ml-2">→</span>
+                </Link>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
   );
 } 
