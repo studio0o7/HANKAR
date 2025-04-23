@@ -412,7 +412,7 @@ export default function ProductDetail() {
             {collection.products
               .filter(p => p.id !== product.id)
               .slice(0, 3)
-              .map((relatedProduct, i) => (
+              .map((relatedProduct) => (
                 <motion.div 
                   key={relatedProduct.id} 
                   variants={fadeIn} 
